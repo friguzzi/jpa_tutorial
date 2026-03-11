@@ -1,5 +1,9 @@
-tutorial
+JPA Tutorial
 ========
+JPA Tutorial from https://github.com/datanucleus/samples-jpa/tree/master/tutorial commit [c9bc408f466dab681cea743a84646f5c2c149b00](https://github.com/datanucleus/samples-jpa/commit/c9bc408f466dab681cea743a84646f5c2c149b00) of Jul 7, 2023.
+
+tutorial
+--------
 
 Simple demonstration of using JPA with DataNucleus.
 You can run this with any supported datastore by simply editing the following files :-
