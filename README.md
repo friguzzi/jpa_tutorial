@@ -2,6 +2,20 @@ JPA Tutorial
 ========
 JPA Tutorial from https://github.com/datanucleus/samples-jpa/tree/master/tutorial commit [c9bc408f466dab681cea743a84646f5c2c149b00](https://github.com/datanucleus/samples-jpa/commit/c9bc408f466dab681cea743a84646f5c2c149b00) of Jul 7, 2023.
 
+Run it with
+
+```
+mvn compile
+mvn datanucleus:enhance
+mvn exec:java
+```
+
+I you want to produce a package, use
+```
+mvn package
+java -jar target/datanucleus-samples-jpa-tutorial-6.0.jar
+```
+
 tutorial
 --------
 
