@@ -15,6 +15,10 @@ mvn package
 java -jar target/datanucleus-samples-jpa-tutorial-6.0.jar
 ```
 
+README.md from https://github.com/datanucleus/samples-jpa/tree/master/tutorial below.
+
+*****
+
 tutorial
 --------
 
