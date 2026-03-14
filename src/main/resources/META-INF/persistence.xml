@@ -14,16 +14,12 @@
         <properties>
             <!-- DataNucleus Store Manager Type -->
             <property name="datanucleus.storeManagerType" value="rdbms"/>
-            <property name="javax.persistence.jdbc.driver" value="software.amazon.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
 
-            <property name="javax.persistence.jdbc.url" value="jdbc:aws-wrapper:postgresql://<host>:5432/<dbname>"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/test"/>
             <property name="javax.persistence.jdbc.user" value="<username>"/>
             <property name="javax.persistence.jdbc.password" value="<password>"/>
-            <property name="javax.persistence.jdbc.loginTimeout" value="100"/>
-            <property name="javax.persistence.jdbc.wrapperPlugins" value="failover,efm2"/>
-            <property name="javax.persistence.jdbc.wrapperLogUnclosedConnections" value="true"/>
-            <property name="javax.persistence.jdbc.sslmode" value="verify-full"/>
-            <property name="javax.persistence.jdbc.sslrootcert" value="/global-bundle.pem"/>
+
             <!-- ENABLE THESE FOR H2 -->
             <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:nucleus1"/>
             <property name="javax.persistence.jdbc.user" value="sa"/>
