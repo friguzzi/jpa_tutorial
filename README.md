@@ -6,7 +6,6 @@ Run it with
 
 ```
 mvn compile
-mvn datanucleus:enhance
 mvn exec:java
 ```
 
