@@ -60,25 +60,28 @@ public class Main
         Map<String, Object> props = new HashMap<>();
 
         Class<?> mainClass = Main.class;
+        try {
+            String certResource = findSSLRootCertFile(mainClass);
+            System.out.println("Cert resource from persistence.xml: " + certResource);
 
-        String certResource = findSSLRootCertFile(mainClass);
-        System.out.println("Cert resource from persistence.xml: " + certResource);
+            InputStream stream = mainClass.getResourceAsStream(
+                certResource.startsWith("/") ? certResource : "/" + certResource
+            );
 
-        InputStream stream = mainClass.getResourceAsStream(
-            certResource.startsWith("/") ? certResource : "/" + certResource
-        );
+            if (stream == null) {
+                throw new IllegalStateException("Cannot find certificate resource in JAR: " + certResource);
+            }
 
-        if (stream == null) {
-            throw new IllegalStateException("Cannot find certificate resource in JAR: " + certResource);
+            Path tempFile = Files.createTempFile("global-bundle", ".pem");
+            tempFile.toFile().deleteOnExit();
+            Files.copy(stream, tempFile, StandardCopyOption.REPLACE_EXISTING);
+            stream.close();
+
+            props.put("javax.persistence.jdbc.sslrootcert", tempFile.toString());
         }
-
-        Path tempFile = Files.createTempFile("global-bundle", ".pem");
-        tempFile.toFile().deleteOnExit();
-        Files.copy(stream, tempFile, StandardCopyOption.REPLACE_EXISTING);
-        stream.close();
-
-        props.put("javax.persistence.jdbc.sslrootcert", tempFile.toString());
-
+        catch(Exception e) {
+            System.out.println("Cert file not found.");
+        }
         // Create an EntityManagerFactory for this "persistence-unit"
         // See the file "META-INF/persistence.xml"
         EntityManagerFactory emf =
